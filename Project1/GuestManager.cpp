@@ -25,6 +25,7 @@ enum GuestType
 
 GuestType Guest::GetGuestType(){
 
+
 }
 
 RoomType Guest::GetRoomType(){
@@ -39,17 +40,20 @@ int Guest::RoomBusyDays(){
 
 }
 
-RoomType  Guest::OcRoomType{
+RoomType  Guest::OcRoomType(){
 
 }
-int Guest::RoomBusyDays{
+int Guest::RoomBusyDays(){
 
 }
 
-
-
-Guest::Guest(GuestType, RoomType, StayDuration){
+Guest::Guest(GuestType, RoomType, int bookedDays){
 
 };
+
+int Rockstar::RoomBusyDays(){
+	int RBookedDays = GetBookedDays() + 10;
+	return RBookedDays;
+}
 
 
