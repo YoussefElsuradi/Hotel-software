@@ -23,23 +23,33 @@ enum GuestType
 };
 
 
+GuestType Guest::GetGuestType(){
 
-class Guest
-{
-	Guest();
-	Guest(GuestType, RoomType, StayDuration);
+}
 
-	virtual ~Guest();
+RoomType Guest::GetRoomType(){
 
-protected:
-	
+}
+
+int Guest::GetBookedDays(){
+
+}
+
+int Guest::RoomBusyDays(){
+
+}
+
+RoomType  Guest::OcRoomType{
+
+}
+int Guest::RoomBusyDays{
+
+}
 
 
+
+Guest::Guest(GuestType, RoomType, StayDuration){
 
 };
 
-class GuestManager
-{
-	int GuestManager(int OfStandardRooms, int dayPriceStandard, int OfComfortRooms, int dayPriceComfort);
 
-};
