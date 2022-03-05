@@ -1,24 +1,16 @@
 #pragma once
+#include<vector>
+#include<iostream>
 
 
 
-enum RoomType 
-{
-	Standard,
-	Comfort
-
+enum class GuestType{
+    Rockstar,Businessman,Family
 };
 
-
-enum GuestType
-{
-
-	Family,
-	Businessman, // Businessman generates additional income (by actively using the items from the room refrigerator)
-	Rockstar // Rockstar keeps room occupied for additional 10 days, but pays only for the days that were booked
-
+enum class RoomType{
+    Standard,Comfort
 };
-
 
 
 
@@ -27,59 +19,77 @@ class Guest
 public: 
 
 
-    GuestType GetGuestType();
-    RoomType GetRoomType();
-    int GetBookedDays();
-    virtual int RoomBusyDays() = 0;
-    virtual int GetAdditionalIncome() = 0;
-    Guest(GuestType, RoomType, int bookedDays);
+    GuestType GetGuestType()const;
+    RoomType GetRoomType()const;
+    int GetBookedDays()const;
+    virtual int GetRoomBusyDays()const = 0;
+    virtual int GetAdditionalIncome()const = 0;
+    Guest(GuestType GuestT, RoomType RoomT, int StayDuration);
     virtual ~Guest();
-    
+   
 
 
 protected:
 
-	RoomType OcRoomType();
-    GuestType typeOfGuest();
-    int bookedDays();
+	RoomType OcRoomType;
+    GuestType typeOfGuest;
+    int bookedDays;
+    int RoomBusyDays;
 
 
-};
-
-class GuestManager
-{
-	
 
 };
+
 
 class Family : public Guest {
-
+public:
+    Family(GuestType GuestT, RoomType RoomT, int StayDuration);
+    int GetRoomBusyDays()const override;
+    int GetAdditionalIncome()const override;
 };
 
 class Rockstar : public Guest {
-    virtual int RoomBusyDays() = 0;
+    public:
+    int GetAdditionalIncome()const override;
+    Rockstar(GuestType GuestT, RoomType RoomT, int StayDuration);
+    int GetRoomBusyDays()const override;
+   
 //number of days the room is busy is 10 days longer than the days booked for a rockstar. There is no additional income.
 };
 
 class Businessman : public Guest {
-    int additionalIncome;
-    public: 
-    Businessman(GuestType, RoomType, int bookedDays);
-    
 
+    public: 
+    int GetAdditionalIncome()const;
+    Businessman(GuestType GuestT, RoomType RoomT, int StayDuration, int additionalIncome);
+    int GetRoomBusyDays()const;
+
+    private:
+    int income;
 };
 
 class GuestManager
 {
-    GuestManager(int NumOfStandardRooms, int dayPriceStandard, int NumOfComfortRooms, int dayPriceComfort);
+    public:
 
-    bool AddGuest(GuestType, RoomType, int stayDays, int additionalIncome);
+    GuestManager(const int NumOfStandardRooms,const int DayPriceStandard,const int NumOfComfortRooms,const int DayPriceComfort);
 
-    bool IsAvailable(RoomType, int inDays);
+    bool AddGuest(GuestType GuestT, RoomType Roomt, int stayDays, int additionalIncome = 0);
+
+    bool IsAvailable(RoomType RoomT, int inDays = 0);
 
     int IncomingProfit();
 
     float EarningEfficiency(); 
+
+    int NumOfStandardRooms, DayPriceStandard, NumOfComfortRooms, DayPriceComfort;
+    int StanRooms, DayPriceS, ComfRooms, DayPriceC;
+    int StanRoomsUsed, ComfRoomsUsed;
+
+    private: 
+
+    std::vector<Guest*> GVect;
+    ~GuestManager();
 
 
 };
