@@ -30,7 +30,7 @@ int main()
     if (hotel_1.IsAvailable(RoomType::Comfort, 1) != false)
         std::cout << "TEST 2.3 ERROR: IsAvailable malfunctions" << std::endl;
 
-    if (hotel_1.IsAvailable(RoomType::Comfort, 2) != true)
+    if (hotel_1.IsAvailable(RoomType::Comfort, 2) != false)
         std::cout << "TEST 2.4 ERROR: IsAvailable malfunctions" << std::endl;
 
     if (hotel_1.IsAvailable(RoomType::Comfort, 3) != true)

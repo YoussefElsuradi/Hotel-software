@@ -245,7 +245,7 @@ GuestManager::~GuestManager(){
 
 }
 
-bool GuestManager:: operator <(GuestManager b){
+bool GuestManager:: operator <(GuestManager& b){
 	
 	return (IncomingProfit() < b.IncomingProfit());
 }

@@ -94,7 +94,7 @@ class GuestManager
     float DayProfits = 0;
     float DayMaxProfits = 0;
     float earnEF = 0;
-    bool operator <(GuestManager b);
+    bool operator <(GuestManager& b);
     ~GuestManager();
 
     
