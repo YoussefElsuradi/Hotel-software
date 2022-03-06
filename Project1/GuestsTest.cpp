@@ -4,20 +4,23 @@
 
 int main()
 {
-   
-    GuestManager hotel_1{ 5, 10, 2, 20 };
+    GuestManager hotel_1{ 5, 10, 2, 20 }; 
+    // NumOfStandardRooms = 5
+    //DayPriceStandard = 10
+    //NumOfComfortRooms = 2
+    //DayPriceComfort = 20
 
-    hotel_1.AddGuest(GuestType::Family, RoomType::Standard, 5); 
-    hotel_1.AddGuest(GuestType::Businessman, RoomType::Comfort, 3, 4); 
-   /* 
+    hotel_1.AddGuest(GuestType::Family, RoomType::Standard, 5);
+    hotel_1.AddGuest(GuestType::Businessman, RoomType::Comfort, 3, 4);
+
     if (hotel_1.AddGuest(GuestType::Rockstar, RoomType::Comfort, 2) != true)
         std::cout << "TEST 1.1 ERROR: AddGuest malfunctions" << std::endl;
 
     if (hotel_1.AddGuest(GuestType::Rockstar, RoomType::Comfort, 15) != false)
         std::cout << "TEST 1.2 ERROR: AddGuest malfunctions" << std::endl;
-*/
-    ///////////////////////////////////////////////////////////////////////////////
 
+    ///////////////////////////////////////////////////////////////////////////////
+    
     if (hotel_1.IsAvailable(RoomType::Standard) != true)
         std::cout << "TEST 2.1 ERROR: IsAvailable malfunctions" << std::endl;
 
@@ -34,8 +37,8 @@ int main()
         std::cout << "TEST 2.5 ERROR: IsAvailable malfunctions" << std::endl;
 
     ///////////////////////////////////////////////////////////////////////////////
-/*
-    if(hotel_1.IncomingProfit() != 162)  
+
+    if (hotel_1.IncomingProfit() != 162)
         std::cout << "TEST 3.1 ERROR: IncomingProfit malfunctions" << std::endl;
 
     GuestManager hotel_2{ 10, 5, 0, 0 };
@@ -64,17 +67,19 @@ int main()
     // Bonus test
     // GuestManager hotel_4{ 0, 0, 0, 0 };
     // hotel_4.EarningEfficiency();
-    
+
     ///////////////////////////////////////////////////////////////////////////////
 
-    if(( hotel_1 < hotel_2) != false)
+    if ((hotel_1 < hotel_2) != false)
         std::cout << "TEST 5.1 ERROR: operator< malfunctions" << std::endl;
 
     if ((hotel_2 < hotel_3) != true)
         std::cout << "TEST 5.2 ERROR: operator< malfunctions" << std::endl;
 
+    
+    
     ///////////////////////////////////////////////////////////////////////////////
-*/
+
     std::cout << "^^^^^^^^^^^^ Any found problems should appear above this line ^^^^^^^^^^^^" << std::endl;
 
     return 0;

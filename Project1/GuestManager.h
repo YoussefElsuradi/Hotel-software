@@ -33,8 +33,9 @@ protected:
 
 	RoomType OcRoomType;
     GuestType typeOfGuest;
-    int bookedDays;
-    int RoomBusyDays;
+    int addIncome = 0;
+    int bookedDays = 0;
+    int RoomBusyDays = 0;
 
 
 
@@ -65,7 +66,7 @@ class Businessman : public Guest {
     int GetRoomBusyDays()const;
 
     private:
-    int income;
+    int income = 0;
 };
 
 class GuestManager
@@ -74,22 +75,33 @@ class GuestManager
 
     GuestManager(const int NumOfStandardRooms,const int DayPriceStandard,const int NumOfComfortRooms,const int DayPriceComfort);
 
-    bool AddGuest(GuestType GuestT, RoomType Roomt, int stayDays, int additionalIncome = 0);
+    bool AddGuest(const GuestType GuestT,const RoomType Roomt, int stayDays, int additionalIncome = 0);
 
-    bool IsAvailable(RoomType RoomT, int inDays = 0);
+    bool IsAvailable(const RoomType RoomT, int inDays = 0);
 
     int IncomingProfit();
 
     float EarningEfficiency(); 
 
-    int NumOfStandardRooms, DayPriceStandard, NumOfComfortRooms, DayPriceComfort;
-    int StanRooms, DayPriceS, ComfRooms, DayPriceC;
-    int StanRoomsUsed, ComfRoomsUsed;
 
+    int StanRooms = 0;
+    int DayPriceS = 0; 
+    int ComfRooms = 0;
+        
+    int DayPriceC = 0;
+    int StanRoomsUsed = 0;
+    int ComfRoomsUsed =0;
+    float DayProfits = 0;
+    float DayMaxProfits = 0;
+    float earnEF = 0;
+    bool operator <(GuestManager b);
+    ~GuestManager();
+
+    
     private: 
 
-    std::vector<Guest*> GVect;
-    ~GuestManager();
+    std::vector<Guest*> GVect; //vector of pointers
+    
 
 
 };
